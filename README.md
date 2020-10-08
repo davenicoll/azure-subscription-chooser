@@ -10,3 +10,7 @@ An interactive bash script enabling you to change Azure subscription quickly wit
 SUBSCRIPTION=`. ".subscription-chooser.sh"`
 if [ -z $SUBSCRIPTION ]; then echo "You chose nothing!"; else; echo "You chose $SUBSCRIPTION"; fi
 ```
+
+### Dependencies
+
+`whiptail` is required to create the menu, but most distros have it installed by default.
