@@ -2,7 +2,7 @@
 
 <img src="screen-capture.gif" width="800" height="589" alt="accessibility text">
 
-An interactive bash script enabling you to change Azure subscription quickly without leaving the CLI. The chooser script can also be called by another script, enabling you to easily use the chooser from your own scripts -
+An interactive bash script enabling you to change Azure subscription quickly without leaving the CLI. The script can be run standalone (`./azure-subscription-chooser.sh`), or called from another script like a function...
 
 ### Example 
 
