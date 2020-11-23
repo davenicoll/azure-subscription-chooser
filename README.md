@@ -13,4 +13,4 @@ if [ -z $SUBSCRIPTION ]; then echo "You chose nothing!"; else; echo "You chose $
 
 ### Dependencies
 
-`whiptail` is required to create the menu, but most distros have it installed already. https://en.wikibooks.org/wiki/Bash_Shell_Scripting/Whiptail
+`whiptail` is required to create the menu, as most distros have it installed already. https://en.wikibooks.org/wiki/Bash_Shell_Scripting/Whiptail
