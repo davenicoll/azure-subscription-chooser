@@ -5,21 +5,19 @@
 MENU=""
 IFS=$(echo -en "\n\b")
 ITEMS=0
-for SUBCRIPTION in $(az account list --query "sort_by([], &name) | [?state=='Enabled'].[name, id, isDefault]" --all | jq -rc '.[] | @csv')
-do
-    NAME=$(echo $SUBCRIPTION | awk -F',' '{print $1}' | tr -d \" )
+for SUBCRIPTION in $(az account list --query "sort_by([], &name) | [?state=='Enabled'].[name, id, isDefault]" --all | jq -rc '.[] | @csv'); do
+    NAME=$(echo $SUBCRIPTION | awk -F',' '{print $1}' | tr -d \")
     ID=$(echo $SUBCRIPTION | awk -F',' '{print $2}' | tr -d \")
     IS_DEFAULT=$(echo $SUBCRIPTION | awk -F',' '{print $3}' | tr -d \")
 
-    NAME=`printf '%-40s' "$NAME"`
+    NAME=$(printf '%-70s' "$NAME")
 
-    MENU+="$NAME ($ID) \n  \n"
+    MENU+="$NAME ($ID)\n  \n"
     ITEMS=$((ITEMS + 1))
 done
 
-export NEWT_COLORS='
-'
-RESULT=$(whiptail --title "Azure Subscriptions" --menu "" $((ITEMS + 8)) 90 $ITEMS $(echo -e $MENU) 3>&1 1>&2 2>&3)
+export NEWT_COLORS=''
+RESULT=$(whiptail --title "Azure Subscriptions" --menu "" $((ITEMS + 8)) 120 $ITEMS $(echo -e $MENU) 3>&1 1>&2 2>&3)
 
 SUBSCRIPTION_ID=$(echo $RESULT | sed 's/.*(\(.*\))/\1/' | sed 's/\s*$//g')
 if [ -z $SUBSCRIPTION_ID ]; then exit; fi
